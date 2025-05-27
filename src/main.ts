@@ -15,7 +15,7 @@ async function bootstrap() {
 
   // Habilitar CORS para el frontend
   app.enableCors({
-    origin: ['http://localhost:5173', 'https://glowskin-public.vercel.app'],
+    origin: ['http://localhost:5173', 'https://glowskin-public.vercel.app/'],
     credentials: true,
   });
 
