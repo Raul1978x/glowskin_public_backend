@@ -15,7 +15,7 @@ async function bootstrap() {
 
   // Habilitar CORS para el frontend
   app.enableCors({
-    origin: 'http://localhost:5173',
+    origin: 'http://localhost:5173','https://your-backend-production-url.up.railway.app/products',
     credentials: true,
   });
 
