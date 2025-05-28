@@ -5,6 +5,8 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 import { ValidationPipe } from '@nestjs/common';
 
+import { publicProductsCors } from './middlewares/publicProductsCors.middleware';
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
@@ -13,11 +15,14 @@ async function bootstrap() {
     new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }),
   );
 
-  // Habilitar CORS para el frontend
+  // Habilitar CORS global solo para dominios confiables
   app.enableCors({
     origin: ['http://localhost:5173', 'https://glowskin-public.vercel.app'],
     credentials: true,
   });
+
+  // Middleware para CORS público solo en GET /products
+  app.use(publicProductsCors);
 
   // Swagger setup
   const config = new DocumentBuilder()
