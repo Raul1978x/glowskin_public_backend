@@ -9,6 +9,7 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { put } from '@vercel/blob';
 import * as sharp from 'sharp';
+import { ApiTags, ApiOperation, ApiConsumes, ApiBody, ApiResponse } from '@nestjs/swagger';
 
 // Tipado explícito para archivos Multer
 export interface SafeMulterFile {
@@ -33,9 +34,32 @@ function isSafeMulterFile(file: unknown): file is SafeMulterFile {
   );
 }
 
+@ApiTags('Uploads')
 @Controller('uploads')
 export class UploadsController {
   @Post('image')
+  @ApiOperation({ summary: 'Subir una imagen y obtener URL optimizada' })
+  @ApiConsumes('multipart/form-data')
+  @ApiBody({
+    schema: {
+      type: 'object',
+      properties: {
+        file: {
+          type: 'string',
+          format: 'binary',
+          description: 'Imagen a subir',
+        },
+      },
+      required: ['file'],
+    },
+  })
+  @ApiResponse({
+    status: 201,
+    description: 'URL de la imagen subida',
+    schema: {
+      example: { url: 'https://blob.vercel-storage.com/tu-bucket/imagen.webp' },
+    },
+  })
   @UseInterceptors(FileInterceptor('file'))
   async uploadImage(@UploadedFile() file: unknown): Promise<{ url: string }> {
     if (!isSafeMulterFile(file)) {
