@@ -9,7 +9,13 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { put } from '@vercel/blob';
 import * as sharp from 'sharp';
-import { ApiTags, ApiOperation, ApiConsumes, ApiBody, ApiResponse } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiConsumes,
+  ApiBody,
+  ApiResponse,
+} from '@nestjs/swagger';
 
 // Tipado explícito para archivos Multer
 export interface SafeMulterFile {
