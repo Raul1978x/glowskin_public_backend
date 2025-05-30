@@ -31,7 +31,9 @@ export class ProductsController {
     type: [CreateProductDto],
   })
   findAll(): Promise<CreateProductDto[]> {
-    return this.productsService.findAll();
+    return this.productsService.findAll() as unknown as Promise<
+      CreateProductDto[]
+    >;
   }
 
   @Post()
@@ -46,6 +48,7 @@ export class ProductsController {
           image: 'https://glowskin.com/crema.jpg',
           price: '29.99',
           category: 'Hidratantes',
+          presentationQuantity: '250ml',
         },
       },
     },
@@ -56,7 +59,9 @@ export class ProductsController {
     type: CreateProductDto,
   })
   create(@Body() data: CreateProductDto): Promise<CreateProductDto> {
-    return this.productsService.create(data);
+    return this.productsService.create(
+      data,
+    ) as unknown as Promise<CreateProductDto>;
   }
 
   @Put(':id')
@@ -81,7 +86,10 @@ export class ProductsController {
     @Param('id') id: string,
     @Body() data: UpdateProductDto,
   ): Promise<CreateProductDto> {
-    return this.productsService.update(Number(id), data);
+    return this.productsService.update(
+      Number(id),
+      data,
+    ) as unknown as Promise<CreateProductDto>;
   }
 
   @Delete(':id')

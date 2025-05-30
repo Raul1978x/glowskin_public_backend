@@ -14,7 +14,8 @@ model Product {
   image       String
   price       String
   category    String
-  cartItems   CartItem[]
+presentationQuantity String? // cantidad según presentación (ej: 250ml, 30g, 1L)
+cartItems   CartItem[]
 }
 
 model Cart {

@@ -13,6 +13,7 @@ async function main() {
           'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600&q=80',
         price: '24.99',
         category: 'facial-body',
+        presentationQuantity: '250ml',
       },
       {
         name: 'Crema Rica en Vitamina A',
@@ -21,6 +22,7 @@ async function main() {
           'https://images.unsplash.com/photo-1608248543803-ba4f8c70e8c1?w=600&q=80',
         price: '29.99',
         category: 'facial-body',
+        presentationQuantity: '200ml',
       },
       {
         name: 'Crema Hidratante de Aceite de Oliva',
@@ -29,6 +31,7 @@ async function main() {
           'https://images.unsplash.com/photo-1601612628452-9e99ced43524?w=600&q=80',
         price: '22.99',
         category: 'facial-body',
+        presentationQuantity: '250ml',
       },
       {
         name: 'Champú Limpiador Suave',
@@ -38,6 +41,7 @@ async function main() {
           'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=600&q=80',
         price: '18.99',
         category: 'hair',
+        presentationQuantity: '300ml',
       },
       {
         name: 'Acondicionador Nutritivo',
@@ -47,6 +51,7 @@ async function main() {
           'https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=600&q=80',
         price: '19.99',
         category: 'hair',
+        presentationQuantity: '300ml',
       },
       {
         name: 'Mascarilla Capilar Intensiva',
@@ -56,9 +61,11 @@ async function main() {
           'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80',
         price: '24.99',
         category: 'hair',
+        presentationQuantity: '200ml',
       },
       {
         name: 'Serene Bloom',
+        presentationQuantity: '50ml',
         description:
           'Fragancia floral y cítrica. Notas de jazmín, bergamota y vainilla.',
         image:
@@ -68,6 +75,7 @@ async function main() {
       },
       {
         name: 'Emberwood Nights',
+        presentationQuantity: '50ml',
         description:
           'Notas amaderadas y ámbar. Elegante y sofisticado para ocasiones especiales.',
         image:
@@ -77,6 +85,7 @@ async function main() {
       },
       {
         name: 'Citrus Burst',
+        presentationQuantity: '50ml',
         description:
           'Frutal y especiado. Refrescante combinación de cítricos y especias exóticas.',
         image:
@@ -86,6 +95,7 @@ async function main() {
       },
       {
         name: 'Cápsulas de Radiación Cutánea',
+        presentationQuantity: '30 cápsulas',
         description:
           'Vitamina C y E para piel radiante. Mejora la elasticidad y luminosidad.',
         image:
@@ -95,6 +105,7 @@ async function main() {
       },
       {
         name: 'Fortaleza de Cabello y Uñas',
+        presentationQuantity: '60 cápsulas',
         description:
           'Biotina y colágeno. Fortalece y promueve el crecimiento saludable.',
         image:
@@ -104,6 +115,7 @@ async function main() {
       },
       {
         name: 'Apoyo al Bienestar Diario',
+        presentationQuantity: '60 tabletas',
         description:
           'Vitaminas generales para salud interna. Mejora tu bienestar desde adentro.',
         image:

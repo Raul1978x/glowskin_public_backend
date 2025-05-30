@@ -7,15 +7,30 @@ export class ProductsService {
   constructor(private prisma: PrismaService) {}
 
   async findAll(): Promise<Product[]> {
-    return this.prisma.product.findMany({ orderBy: { id: 'asc' } });
+    const products = await this.prisma.product.findMany({
+      orderBy: { id: 'asc' },
+    });
+    // Asegura que todos tengan presentationQuantity
+    return products.map((p) => ({
+      ...p,
+      presentationQuantity: (p.presentationQuantity ?? '').toString(),
+    }));
   }
 
   async create(data: Omit<Product, 'id'>): Promise<Product> {
-    return this.prisma.product.create({ data });
+    const product = await this.prisma.product.create({ data });
+    return {
+      ...product,
+      presentationQuantity: (product.presentationQuantity ?? '').toString(),
+    };
   }
 
   async update(id: number, data: Partial<Product>): Promise<Product> {
-    return this.prisma.product.update({ where: { id }, data });
+    const product = await this.prisma.product.update({ where: { id }, data });
+    return {
+      ...product,
+      presentationQuantity: (product.presentationQuantity ?? '').toString(),
+    };
   }
 
   async delete(id: number): Promise<{ success: boolean }> {

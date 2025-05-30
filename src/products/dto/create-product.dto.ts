@@ -38,4 +38,12 @@ export class CreateProductDto {
   @IsString()
   @IsNotEmpty()
   category: string;
+
+  @ApiProperty({
+    example: '250ml',
+    description: 'Cantidad según presentación (ej: 250ml, 30g, 1L)',
+  })
+  @IsString()
+  @IsNotEmpty()
+  presentationQuantity: string;
 }
