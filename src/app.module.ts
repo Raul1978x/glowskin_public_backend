@@ -6,9 +6,10 @@ import { MercadoPagoService } from './mercadopago.service';
 import { ProductsModule } from './products/products.module';
 import { CartModule } from './cart/cart.module';
 import { UploadsController } from './uploads.controller';
+import { ImagesModule } from './images.module';
 
 @Module({
-  imports: [ProductsModule, CartModule],
+  imports: [ProductsModule, CartModule, ImagesModule],
   controllers: [AppController, MercadoPagoController, UploadsController],
   providers: [AppService, MercadoPagoService],
 })
