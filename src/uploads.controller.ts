@@ -97,7 +97,7 @@ export class UploadsController {
     const { url } = await put(
       file.originalname.replace(/\.[^.]+$/, '.webp'),
       optimizedBuffer,
-      { access: 'public', token: BLOB_TOKEN },
+      { access: 'public', token: BLOB_TOKEN, addRandomSuffix: true },
     );
     return { url };
   }
