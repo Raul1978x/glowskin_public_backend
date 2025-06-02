@@ -8,14 +8,14 @@ datasource db {
 }
 
 model Product {
-  id          Int     @id @default(autoincrement())
-  name        String
-  description String
-  image       String
-  price       String
-  category    String
-presentationQuantity String? // cantidad según presentación (ej: 250ml, 30g, 1L)
-cartItems   CartItem[]
+  id                   Int        @id @default(autoincrement())
+  name                 String
+  description          String
+  image                String
+  price                String
+  category             String
+  presentationQuantity String? // cantidad según presentación (ej: 250ml, 30g, 1L)
+  cartItems            CartItem[]
 }
 
 model Cart {
@@ -27,10 +27,10 @@ model Cart {
 }
 
 model CartItem {
-  id        Int      @id @default(autoincrement())
-  cart      Cart     @relation(fields: [cartId], references: [id])
+  id        Int     @id @default(autoincrement())
+  cart      Cart    @relation(fields: [cartId], references: [id])
   cartId    Int
-  product   Product  @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
   productId Int
-  quantity  Int      @default(1)
+  quantity  Int     @default(1)
 }

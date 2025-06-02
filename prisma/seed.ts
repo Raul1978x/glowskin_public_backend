@@ -6,132 +6,102 @@ async function main() {
   await prisma.product.createMany({
     data: [
       {
-        name: 'Crema Hidratante de Aloe Vera',
+        name: 'Crema Humectante',
         description:
-          'Ideal para pieles sensibles. Calma, refresca y rehidrata profundamente.',
+          'Crema Hidratante a base aceite de oliva, coco y vitamina, enriquecida con extracto natural de aloe vera',
         image:
-          'https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?w=600&q=80',
-        price: '24.99',
+          'https://hwhej8qe5va9wndj.public.blob.vercel-storage.com/1000166210-g7CH2b1j93q4wCiEDq41jSFqz4SIXM.webp',
+        price: '4000',
         category: 'facial-body',
-        presentationQuantity: '250ml',
+        presentationQuantity: '100 cc',
       },
       {
-        name: 'Crema Rica en Vitamina A',
-        description: 'Anti-edad, reduce arrugas, ideal para pieles maduras.',
-        image:
-          'https://images.unsplash.com/photo-1608248543803-ba4f8c70e8c1?w=600&q=80',
-        price: '29.99',
-        category: 'facial-body',
-        presentationQuantity: '200ml',
-      },
-      {
-        name: 'Crema Hidratante de Aceite de Oliva',
-        description: 'Hidratación intensa, apta para todo tipo de piel.',
-        image:
-          'https://images.unsplash.com/photo-1601612628452-9e99ced43524?w=600&q=80',
-        price: '22.99',
-        category: 'facial-body',
-        presentationQuantity: '250ml',
-      },
-      {
-        name: 'Champú Limpiador Suave',
+        name: 'Crema Humectante',
         description:
-          'Con aloe vera y aceite de coco. Limpieza profunda sin agredir el cuero cabelludo.',
+          'Crema Hidratante a base aceite de oliva, coco y vitamina, enriquecida con extracto natural de aloe vera',
         image:
-          'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=600&q=80',
-        price: '18.99',
+          'https://hwhej8qe5va9wndj.public.blob.vercel-storage.com/1000166209-QGaTJRcN0NwIMUfB8aRFaqDx2VA4Vf.webp',
+        price: '7000',
+        category: 'facial-body',
+        presentationQuantity: '250cc',
+      },
+      {
+        name: 'Champú Limpiador',
+        description:
+          'Con aloe vera  limpieza profunda sin agredir el cuero cabelludo.',
+        image:
+          'https://hwhej8qe5va9wndj.public.blob.vercel-storage.com/Brillo%20y%20Fuerza%20en%20tu%20Cabello%20%281%29.webp',
+        price: '4000',
         category: 'hair',
-        presentationQuantity: '300ml',
+        presentationQuantity: '250ml',
       },
       {
         name: 'Acondicionador Nutritivo',
-        description:
-          'Con aceite de oliva y vitamina A. Deja el cabello suave, brillante y fácil de peinar.',
+        description: 'Deja el cabello suave, brillante y fácil de peinar.',
         image:
-          'https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=600&q=80',
-        price: '19.99',
+          'https://hwhej8qe5va9wndj.public.blob.vercel-storage.com/acondicionador.webp',
+        price: '4000',
         category: 'hair',
-        presentationQuantity: '300ml',
+        presentationQuantity: '250cc',
       },
       {
-        name: 'Mascarilla Capilar Intensiva',
+        name: 'Nutrición Capilar Intensiva',
         description:
           'Tratamiento semanal para cabello dañado. Restaura y fortalece desde la raíz.',
         image:
           'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&q=80',
-        price: '24.99',
+        price: '10000',
         category: 'hair',
-        presentationQuantity: '200ml',
+        presentationQuantity: '250cc',
       },
       {
-        name: 'Serene Bloom',
-        presentationQuantity: '50ml',
+        name: 'Rock Spirit',
         description:
-          'Fragancia floral y cítrica. Notas de jazmín, bergamota y vainilla.',
+          'es una fragancia masculina de espíritu rebelde y moderno, inspirada en la energía y el magnetismo del rock. Su perfil olfativo une la frescura cítrica y aromática de la salida con un corazón dulce y especiado, y un fondo amaderado y cálido que deja una estela intensa y sensual. Es una fragancia para hombres audaces, que rompen las reglas y buscan dejar huella con un aroma radical, sensual e impredecible. Ideal para la noche, salidas especiales y quienes desean un perfume de personalidad fuerte y duradera ',
         image:
-          'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=600&q=80',
-        price: '39.99',
+          'https://hwhej8qe5va9wndj.public.blob.vercel-storage.com/1000166189-smKG8ILBo9tqmndYDcUyRIu8vLEBx6.webp',
+        price: '18000',
         category: 'perfumes',
+        presentationQuantity: '100ml',
       },
       {
-        name: 'Emberwood Nights',
-        presentationQuantity: '50ml',
+        name: 'Imperial Midnight ',
         description:
-          'Notas amaderadas y ámbar. Elegante y sofisticado para ocasiones especiales.',
-        image:
-          'https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=600&q=80',
-        price: '45.99',
+          'es una fragancia masculina intensa y seductora, diseñada para el hombre moderno que busca destacar con elegancia y misterio. Combina la frescura cítrico-especiada de la bergamota y la pimienta rosa con un corazón amaderado profundo (oud, sándalo) y un fondo cálido y sensual (ámbar, cuero, vainilla). Ideal para eventos nocturnos, ocasiones especiales y para quienes desean un aroma duradero y con personalidad.',
+        image: '/images/Imperial Midnight.webp',
+        price: '10000',
         category: 'perfumes',
+        presentationQuantity: '60ml',
       },
       {
-        name: 'Citrus Burst',
-        presentationQuantity: '50ml',
+        name: 'Aqua de Venus',
         description:
-          'Frutal y especiado. Refrescante combinación de cítricos y especias exóticas.',
+          'Esta composición logra una fragancia femenina, delicada y envolvente, reconocida por su carácter empolvado y floral, con un fondo cálido y sensual',
         image:
-          'https://images.unsplash.com/photo-1541643600914-78b084683601?w=600&q=80',
-        price: '34.99',
+          'https://hwhej8qe5va9wndj.public.blob.vercel-storage.com/1000166194-UUTUofBObh0sTkRB2DhcSIGLAM0mLu.webp',
+        price: '10000',
         category: 'perfumes',
-      },
-      {
-        name: 'Cápsulas de Radiación Cutánea',
-        presentationQuantity: '30 cápsulas',
-        description:
-          'Vitamina C y E para piel radiante. Mejora la elasticidad y luminosidad.',
-        image:
-          'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&q=80',
-        price: '29.99',
-        category: 'supplements',
-      },
-      {
-        name: 'Fortaleza de Cabello y Uñas',
-        presentationQuantity: '60 cápsulas',
-        description:
-          'Biotina y colágeno. Fortalece y promueve el crecimiento saludable.',
-        image:
-          'https://images.unsplash.com/photo-1626170733247-7066f0e33c8b?w=600&q=80',
-        price: '32.99',
-        category: 'supplements',
-      },
-      {
-        name: 'Apoyo al Bienestar Diario',
-        presentationQuantity: '60 tabletas',
-        description:
-          'Vitaminas generales para salud interna. Mejora tu bienestar desde adentro.',
-        image:
-          'https://images.unsplash.com/photo-1577174881658-0f30ed549adc?w=600&q=80',
-        price: '27.99',
-        category: 'supplements',
+        presentationQuantity: '60ml',
       },
     ],
   });
 }
 
-main()
-  .catch((e) => {
-    console.error(e);
-    process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
+if (process.argv[2] === 'export') {
+  // Exporta los productos actuales de la base de datos
+  void prisma.product.findMany().then((products) => {
+    // Elimina campos no necesarios (id, createdAt, updatedAt, etc.)
+    const arr = products.map(({ id, ...rest }) => rest);
+    console.log(JSON.stringify(arr, null, 2));
+    void prisma.$disconnect();
   });
+} else {
+  main()
+    .catch((e) => {
+      console.error(e);
+      process.exit(1);
+    })
+    .finally(async () => {
+      await prisma.$disconnect();
+    });
+}

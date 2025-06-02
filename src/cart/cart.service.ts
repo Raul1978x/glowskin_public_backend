@@ -42,8 +42,12 @@ export class CartService {
   async updateItemQuantity(token: string, itemId: number, quantity: number) {
     const cart = await this.prisma.cart.findUnique({ where: { token } });
     if (!cart) throw new NotFoundException('Cart not found');
+    const item = await this.prisma.cartItem.findUnique({ where: { id: itemId } });
+    if (!item || item.cartId !== cart.id) {
+      throw new NotFoundException('Item not found in this cart');
+    }
     return this.prisma.cartItem.update({
-      where: { id: itemId, cartId: cart.id },
+      where: { id: itemId },
       data: { quantity },
     });
   }
@@ -51,8 +55,12 @@ export class CartService {
   async removeItem(token: string, itemId: number) {
     const cart = await this.prisma.cart.findUnique({ where: { token } });
     if (!cart) throw new NotFoundException('Cart not found');
+    const item = await this.prisma.cartItem.findUnique({ where: { id: itemId } });
+    if (!item || item.cartId !== cart.id) {
+      throw new NotFoundException('Item not found in this cart');
+    }
     return this.prisma.cartItem.delete({
-      where: { id: itemId, cartId: cart.id },
+      where: { id: itemId },
     });
   }
 
