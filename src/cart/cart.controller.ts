@@ -42,18 +42,26 @@ export class CartController {
   @Patch(':token/item/:itemId')
   updateItemQuantity(
     @Param('token') token: string,
-    @Param('itemId') itemId: number,
+    @Param('itemId') itemId: string,
     @Body() body: { quantity?: number },
   ) {
     if (!body || typeof body.quantity !== 'number') {
       throw new BadRequestException('Body must include a valid quantity');
     }
-    return this.cartService.updateItemQuantity(token, itemId, body.quantity);
+    const itemIdNum = Number(itemId);
+    if (isNaN(itemIdNum)) {
+      throw new BadRequestException('itemId must be a number');
+    }
+    return this.cartService.updateItemQuantity(token, itemIdNum, body.quantity);
   }
 
   @Delete(':token/item/:itemId')
-  removeItem(@Param('token') token: string, @Param('itemId') itemId: number) {
-    return this.cartService.removeItem(token, itemId);
+  removeItem(@Param('token') token: string, @Param('itemId') itemId: string) {
+    const itemIdNum = Number(itemId);
+    if (isNaN(itemIdNum)) {
+      throw new BadRequestException('itemId must be a number');
+    }
+    return this.cartService.removeItem(token, itemIdNum);
   }
 
   @Delete(':token/clear')
