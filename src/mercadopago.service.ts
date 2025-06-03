@@ -14,7 +14,6 @@ if (!ACCESS_TOKEN) {
   throw new Error('MERCADOPAGO_ACCESS_TOKEN no está definido en el entorno');
 }
 const mpClient = new MercadoPagoConfig({ accessToken: ACCESS_TOKEN });
-console.log('[MercadoPago] mpClient.preference:', (mpClient as any).preference);
 
 async function createMercadoPagoPreference(
   client: MercadoPagoConfig,
@@ -54,7 +53,18 @@ export class MercadoPagoService {
       };
       return await createMercadoPagoPreference(mpClient, preferenceClean);
     } catch (error) {
-      console.error('[MercadoPago] Error real:', error);
+      // Muestra el error real de Mercado Pago si existe error.response.data
+      if (
+        error &&
+        typeof error === 'object' &&
+        'response' in error &&
+        error.response &&
+        error.response.data
+      ) {
+        console.error('[MercadoPago] Error real:', error.response.data);
+      } else {
+        console.error('[MercadoPago] Error real:', error);
+      }
       throw new Error(
         'Error al crear preferencia de MercadoPago: ' +
           (error as Error).message,
