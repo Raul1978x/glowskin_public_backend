@@ -8,8 +8,15 @@ import { CartModule } from './cart/cart.module';
 import { UploadsController } from './uploads.controller';
 import { ImagesModule } from './images.module';
 
+import { ConfigModule } from '@nestjs/config';
+
 @Module({
-  imports: [ProductsModule, CartModule, ImagesModule],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    ProductsModule,
+    CartModule,
+    ImagesModule,
+  ],
   controllers: [AppController, MercadoPagoController, UploadsController],
   providers: [AppService, MercadoPagoService],
 })
