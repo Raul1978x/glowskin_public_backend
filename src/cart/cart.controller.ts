@@ -3,6 +3,7 @@ import {
   Get,
   Post,
   Body,
+  BadRequestException,
   Param,
   Delete,
   Patch,
@@ -26,8 +27,11 @@ export class CartController {
   @Post(':token/add')
   addToCart(
     @Param('token') token: string,
-    @Body() body: { productId: number; quantity?: number },
+    @Body() body: { productId?: number; quantity?: number },
   ) {
+    if (!body || typeof body.productId !== 'number') {
+      throw new BadRequestException('Body must include a valid productId');
+    }
     return this.cartService.addToCart(
       token,
       body.productId,
@@ -39,8 +43,11 @@ export class CartController {
   updateItemQuantity(
     @Param('token') token: string,
     @Param('itemId') itemId: number,
-    @Body() body: { quantity: number },
+    @Body() body: { quantity?: number },
   ) {
+    if (!body || typeof body.quantity !== 'number') {
+      throw new BadRequestException('Body must include a valid quantity');
+    }
     return this.cartService.updateItemQuantity(token, itemId, body.quantity);
   }
 
