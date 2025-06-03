@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Injectable } from '@nestjs/common';
 import { MercadoPagoConfig, Preference } from 'mercadopago';
@@ -44,9 +46,9 @@ export class MercadoPagoService {
         ...body,
         items: cleanItems,
         back_urls: body.back_urls ?? {
-          success: 'https://glowskin-public.vercel.app/success',
-          failure: 'https://glowskin-public.vercel.app/failure',
-          pending: 'https://glowskin-public.vercel.app/pending',
+          success: 'https://glowskin.com.ar/pago-exitoso',
+          failure: 'https://glowskin.com.ar/pago-fallido',
+          pending: 'https://glowskin.com.ar/pago-pendiente',
         },
         auto_return: body.auto_return ?? 'approved',
       };
