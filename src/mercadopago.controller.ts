@@ -1,14 +1,15 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { Controller, Post, Body } from '@nestjs/common';
+import { ApiBody } from '@nestjs/swagger';
 import { MercadoPagoService } from './mercadopago.service';
+import { CreatePreferenceDto } from './dto/create-preference.dto';
 
 @Controller('mercadopago')
 export class MercadoPagoController {
   constructor(private readonly mpService: MercadoPagoService) {}
 
   @Post('create-preference')
-  async createPreference(@Body() body: any) {
-    // body: { items, payer }
+  @ApiBody({ type: CreatePreferenceDto })
+  async createPreference(@Body() body: CreatePreferenceDto) {
     return this.mpService.createPreference(body);
   }
 
