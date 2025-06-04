@@ -59,6 +59,64 @@ $ npm run test:cov
 
 ## Deployment
 
+---
+
+## 🛡️ Admin Users CRUD & Auth (GlowSkin Backend)
+
+### Endpoints principales
+
+#### Autenticación
+- **POST /auth/login**
+  - Body: `{ "email": "admin@email.com", "password": "tuPassword" }`
+  - Respuesta: `{ access_token: "JWT", user: { ... } }`
+
+#### Usuarios admin (protegido con JWT)
+- **GET /users** — Lista todos los usuarios admin
+- **GET /users/:id** — Obtiene usuario por id
+- **POST /users** — Crea usuario admin (campos: name, email, password, role, active)
+- **PUT /users/:id** — Edita usuario admin
+- **DELETE /users/:id** — Elimina usuario admin
+
+> Todos los endpoints de /users requieren enviar JWT en header:
+> `Authorization: Bearer {access_token}`
+
+### Roles
+- `admin`: Puede gestionar usuarios, pero no eliminar superadmins.
+- `superadmin`: Control total.
+
+### Swagger UI
+- Documentación y pruebas interactivas en: `http://localhost:3000/api-docs`
+- **IMPORTANTE:** En el campo de autorización de Swagger, pega solo el token (sin la palabra 'Bearer'), Swagger lo antepone automáticamente.
+
+### Ejemplo de login y uso de JWT
+```bash
+curl -X POST http://localhost:3000/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"admin@email.com","password":"tuPassword"}'
+```
+Respuesta:
+```json
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIs...",
+  "user": { "id": 1, "name": "Admin", ... }
+}
+```
+
+Luego usar ese token para acceder a endpoints protegidos:
+```bash
+curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIs..." http://localhost:3000/users
+```
+
+### Crear el primer usuario admin
+Puedes crear el primer usuario manualmente en la base de datos (usando Prisma Studio o SQL), o temporalmente exponer el endpoint POST /users sin JWT y luego volver a protegerlo.
+
+### Integración Frontend
+- El frontend debe hacer login en `/auth/login` y guardar el JWT.
+- Para acceder o modificar usuarios, enviar el JWT en el header Authorization.
+- Ver ejemplos y schemas en Swagger UI.
+
+---
+
 When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
 
 If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:

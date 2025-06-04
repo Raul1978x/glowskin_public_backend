@@ -6,6 +6,7 @@ import {
   Put,
   Param,
   Delete,
+  Res,
 } from '@nestjs/common';
 import {
   ApiTags,
@@ -96,11 +97,14 @@ export class ProductsController {
   @ApiOperation({ summary: 'Eliminar un producto' })
   @ApiParam({ name: 'id', type: Number, example: 1 })
   @ApiResponse({
-    status: 200,
-    description: 'Eliminado correctamente',
-    schema: { example: { success: true } },
+    status: 204,
+    description: 'Producto eliminado (sin contenido).',
   })
-  delete(@Param('id') id: string): Promise<{ success: boolean }> {
-    return this.productsService.delete(Number(id));
+  async delete(
+    @Param('id') id: string,
+    @Res({ passthrough: true }) res: import('express').Response,
+  ) {
+    await this.productsService.delete(Number(id));
+    return res.status(204).send();
   }
 }

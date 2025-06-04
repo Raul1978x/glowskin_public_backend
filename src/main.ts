@@ -34,6 +34,18 @@ async function bootstrap() {
     .setTitle('GlowSkin API')
     .setDescription('API para gestión de productos GlowSkin')
     .setVersion('1.0')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'Bearer',
+        bearerFormat: 'JWT',
+        name: 'Authorization',
+        description:
+          'Introduce solo el token JWT. El prefijo Bearer es automático.',
+        in: 'header',
+      },
+      'access-token',
+    )
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api-docs', app, document);

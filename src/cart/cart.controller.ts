@@ -7,8 +7,10 @@ import {
   Param,
   Delete,
   Patch,
+  Res,
 } from '@nestjs/common';
 import { CartService } from './cart.service';
+import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @Controller('cart')
 export class CartController {
@@ -56,16 +58,37 @@ export class CartController {
   }
 
   @Delete(':token/item/:itemId')
-  removeItem(@Param('token') token: string, @Param('itemId') itemId: string) {
+  /**
+   * Elimina un ítem del carrito
+   * @returns 204 No Content si se elimina correctamente
+   */
+  @ApiOperation({ summary: 'Eliminar un ítem del carrito' })
+  @ApiResponse({ status: 204, description: 'Ítem eliminado (sin contenido).' })
+  async removeItem(
+    @Param('token') token: string,
+    @Param('itemId') itemId: string,
+    @Res({ passthrough: true }) res: import('express').Response,
+  ) {
     const itemIdNum = Number(itemId);
     if (isNaN(itemIdNum)) {
       throw new BadRequestException('itemId must be a number');
     }
-    return this.cartService.removeItem(token, itemIdNum);
+    await this.cartService.removeItem(token, itemIdNum);
+    return res.status(204).send();
   }
 
   @Delete(':token/clear')
-  clearCart(@Param('token') token: string) {
-    return this.cartService.clearCart(token);
+  /**
+   * Vacía el carrito completamente
+   * @returns 204 No Content si se vacía correctamente
+   */
+  @ApiOperation({ summary: 'Vaciar el carrito' })
+  @ApiResponse({ status: 204, description: 'Carrito vaciado (sin contenido).' })
+  async clearCart(
+    @Param('token') token: string,
+    @Res({ passthrough: true }) res: import('express').Response,
+  ) {
+    await this.cartService.clearCart(token);
+    return res.status(204).send();
   }
 }

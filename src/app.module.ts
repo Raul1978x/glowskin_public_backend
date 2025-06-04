@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { UsersModule } from './users.module';
+import { AuthModule } from './auth.module';
 import { MercadoPagoController } from './mercadopago.controller';
 import { MercadoPagoService } from './mercadopago.service';
 import { ProductsModule } from './products/products.module';
@@ -14,6 +16,8 @@ import { ConfigModule } from '@nestjs/config';
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     ProductsModule,
+    UsersModule,
+    AuthModule,
     CartModule,
     ImagesModule,
   ],
