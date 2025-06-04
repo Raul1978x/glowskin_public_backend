@@ -1,4 +1,5 @@
 import { Controller, Post, Body, UnauthorizedException } from '@nestjs/common';
+import { JwtUser } from './types/jwt-user.interface';
 import { AuthService } from './auth.service';
 import {
   ApiTags,
@@ -67,11 +68,12 @@ export class AuthController {
     },
   })
   async login(@Body() body: { email: string; password: string }) {
-    const user: Record<string, unknown> | null =
-      await this.authService.validateUser(body.email, body.password);
-    if (!user || typeof user !== 'object')
-      throw new UnauthorizedException('Credenciales incorrectas');
-    const { access_token } = await this.authService.login(user);
+    const user: JwtUser | null = await this.authService.validateUser(
+      body.email,
+      body.password,
+    );
+    if (!user) throw new UnauthorizedException('Credenciales incorrectas');
+    const { access_token } = this.authService.login(user);
     return { access_token };
   }
 }
