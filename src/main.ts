@@ -21,6 +21,7 @@ async function bootstrap() {
     origin: [
       'http://localhost:5173',
       'https://glowskin-public.vercel.app',
+      'https://glowskin.com.ar',
       'https://www.glowskin.com.ar',
     ],
     credentials: true,
